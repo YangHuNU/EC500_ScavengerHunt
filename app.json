@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Coupon",
-    "slug": "Coupon",
+    "name": "exampleProject",
+    "slug": "exampleProject",
     "platforms": [
       "ios",
       "android",
