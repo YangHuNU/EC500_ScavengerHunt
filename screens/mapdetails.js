@@ -7,24 +7,24 @@ import customData from '../bostonclients.json';
 
 
 export default function MapDetails({ navigation }) {
-	
-	const onPress = (marker) => increment(marker);
-	
-	const increment = (marker) => {
+    
+    const onPress = (marker) => increment(marker);
+    
+    const increment = (marker) => {
         console.log(marker)
         marker.used = 1
     };
     const used = (marker) => {
-		<View style={styles.calloutText}>
-			<Text>{marker.Company} {'\n'} You have used this coupon already. </Text>
-		</View>
+        <View style={styles.calloutText}>
+            <Text>{marker.Company} {'\n'} You have used this coupon already. </Text>
+        </View>
     };
-	const free = (marker) => {
-		<View style={styles.calloutText}>
-			<Text>{marker.Company} {'\n'} {marker.Coupon} </Text>
-		</View>
-	};
-
+    const free = (marker) => {
+        <View style={styles.calloutText}>
+            <Text>{marker.Company} {'\n'} {marker.Coupon} </Text>
+        </View>
+    };
+    
     return (
         <MapView
             style={{ flex: 1 }}
@@ -37,9 +37,11 @@ export default function MapDetails({ navigation }) {
             }}>
 
             {customData.map((marker, index) => {
-                
+                com = navigation.getParam('Company');
+
                 if (marker.Company == navigation.getParam('Company')) {
-                    if (marker.used == 0) {
+
+                        
                         return (
                             <Marker key={index} coordinate={{ latitude: marker.Location.Latitude, longitude: marker.Location.Longitude }}
                                 title={marker.Labels[0]}>
@@ -52,23 +54,11 @@ export default function MapDetails({ navigation }) {
                                 </Callout>
                             </Marker>
                         );
+                    
                     }
-                    else if (marker.used==1) {
-                        return (
-                            <MapView.Marker key={index} coordinate={{ latitude: marker.Location.Latitude, longitude: marker.Location.Longitude }}
-                                title={marker.Labels[0]}>
-                                <View style={styles.marker2} />
-                                <MapView.Callout tooltip style={styles.customView}>
-                                    <View style={styles.calloutText}>
-                                        <Text>{marker.Company} {'\n'}{marker.Coupon} {'\n'} {marker.used}</Text>
-                                    </View>
-                                </MapView.Callout>
-                            </MapView.Marker>
-                        );
-                    }
-                }
+                
                 if (navigation.getParam('all')=='all'){
-                    if (marker.used == 0) {
+                    console.log(com);
                         return (
                             <Marker key={index} coordinate={{ latitude: marker.Location.Latitude, longitude: marker.Location.Longitude }}
                                 title={marker.Labels[0]}>
@@ -81,24 +71,11 @@ export default function MapDetails({ navigation }) {
                                 </Callout>
                             </Marker>
                         );
-                    }
-                    else if (marker.used==1) {
-                        return (
-                            <MapView.Marker key={index} coordinate={{ latitude: marker.Location.Latitude, longitude: marker.Location.Longitude }}
-                                title={marker.Labels[0]}>
-                                <View style={styles.marker2} />
-                                <MapView.Callout tooltip style={styles.customView}>
-                                    <View style={styles.calloutText}>
-                                        <Text>{marker.Company} {'\n'}{marker.Coupon} {'\n'} {marker.used}</Text>
-                                    </View>
-                                </MapView.Callout>
-                            </MapView.Marker>
-                        );
-                    }
                 }
             })}
         </MapView>
-    )
+    );
+
 }
 
 const styles = StyleSheet.create({
