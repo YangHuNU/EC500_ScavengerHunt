@@ -44,8 +44,8 @@ def flipper_post_install(installer)
   end
 end
 
-target 'rec' do
-  # Pods for rec
+target 'ScavengerHunt' do
+  # Pods for ScavengerHunt
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -77,11 +77,16 @@ target 'rec' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  target 'recTests' do
+  target 'ScavengerHuntTests' do
     inherit! :complete
     # Pods for testing
   end
 
+  rn_maps_path = '../node_modules/react-native-maps'
+  pod 'react-native-google-maps', :path => rn_maps_path
+  pod 'GoogleMaps'
+  pod 'Google-Maps-iOS-Utils'
+  
   use_native_modules!
 
   # Enables Flipper.
@@ -94,10 +99,10 @@ target 'rec' do
   end
 end
 
-target 'rec-tvOS' do
-  # Pods for rec-tvOS
+target 'ScavengerHunt-tvOS' do
+  # Pods for ScavengerHunt-tvOS
 
-  target 'rec-tvOSTests' do
+  target 'ScavengerHunt-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

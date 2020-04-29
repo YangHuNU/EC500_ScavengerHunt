@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
 
 export default function Home({ navigation }) {
     const pressHandler = () => {
-        navigation.navigate('MapDetails')
+        navigation.navigate('MapDetails', {all: 'all'})
     }
 
     return (

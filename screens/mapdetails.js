@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, Animated, Image, Dimensions, TouchableOpacity, ScrollView } from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
-import { Marker } from 'react-native-maps';
+import { Marker, Callout } from 'react-native-maps';
 import customData from '../bostonclients.json';
 
 
@@ -24,10 +24,10 @@ export default function MapDetails({ navigation }) {
 			<Text>{marker.Company} {'\n'} {marker.Coupon} </Text>
 		</View>
 	};
+
     return (
         <MapView
             style={{ flex: 1 }}
-            //provider={PROVIDER_GOOGLE}
             showsUserLocation={true}
             initialRegion={{
                 latitude: 42.361145,
@@ -35,42 +35,67 @@ export default function MapDetails({ navigation }) {
                 latitudeDelta: 0.0922,
                 longitudeDelta: 0.0421
             }}>
+
             {customData.map((marker, index) => {
+                
                 if (marker.Company == navigation.getParam('Company')) {
+                    if (marker.used == 0) {
+                        return (
+                            <Marker key={index} coordinate={{ latitude: marker.Location.Latitude, longitude: marker.Location.Longitude }}
+                                title={marker.Labels[0]}>
+                                <View style={styles.marker1} />
+                                <Callout tooltip style={styles.customView}>
+                                    {increment(marker)}
+                                    <View style={styles.calloutText}>
+                                        <Text>{marker.Company} {'\n'}{marker.Coupon} {'\n'} {marker.used}</Text>
+                                    </View>
+                                </Callout>
+                            </Marker>
+                        );
+                    }
+                    else if (marker.used==1) {
                         return (
                             <MapView.Marker key={index} coordinate={{ latitude: marker.Location.Latitude, longitude: marker.Location.Longitude }}
                                 title={marker.Labels[0]}>
-                                <View style={styles.marker1} />
+                                <View style={styles.marker2} />
                                 <MapView.Callout tooltip style={styles.customView}>
-                                    <TouchableOpacity onPress={onCalloutPress(marker)}>
-										<View style={styles.calloutText}>
-											<Text>{marker.Company} {'\n'}{marker.Coupon} {'\n'} {marker.used}</Text>
-										</View>
-									</TouchableOpacity>
+                                    <View style={styles.calloutText}>
+                                        <Text>{marker.Company} {'\n'}{marker.Coupon} {'\n'} {marker.used}</Text>
+                                    </View>
                                 </MapView.Callout>
                             </MapView.Marker>
                         );
+                    }
                 }
-                // if (marker.Company == navigation.getParam('Company')) {
-                        // return (
-						// <View>
-                            // <MapView.Marker key={index} coordinate={{ latitude: marker.Location.Latitude, longitude: marker.Location.Longitude }}
-                                // title={marker.Labels[0]}>
-                                // <View style={styles.marker1} />
-							// </MapView.Marker>
-                            // <Animated.ScrollView
-							  // style={styles.customView}
-							  // onPress={onPress}
-							// >  
-								// <MapView.Callout tooltip >
-										// <View style={styles.calloutText}>
-											// <Text>{marker.Company} {'\n'}{marker.Coupon} {'\n'} {marker.used}</Text>
-										// </View>
-                                // </MapView.Callout>
-                            // </Animated.ScrollView>
-                        // </View>
-						// );
-                // }
+                if (navigation.getParam('all')=='all'){
+                    if (marker.used == 0) {
+                        return (
+                            <Marker key={index} coordinate={{ latitude: marker.Location.Latitude, longitude: marker.Location.Longitude }}
+                                title={marker.Labels[0]}>
+                                <View style={styles.marker1} />
+                                <Callout tooltip style={styles.customView}>
+                                    {increment(marker)}
+                                    <View style={styles.calloutText}>
+                                        <Text>{marker.Company} {'\n'}{marker.Coupon} {'\n'} {marker.used}</Text>
+                                    </View>
+                                </Callout>
+                            </Marker>
+                        );
+                    }
+                    else if (marker.used==1) {
+                        return (
+                            <MapView.Marker key={index} coordinate={{ latitude: marker.Location.Latitude, longitude: marker.Location.Longitude }}
+                                title={marker.Labels[0]}>
+                                <View style={styles.marker2} />
+                                <MapView.Callout tooltip style={styles.customView}>
+                                    <View style={styles.calloutText}>
+                                        <Text>{marker.Company} {'\n'}{marker.Coupon} {'\n'} {marker.used}</Text>
+                                    </View>
+                                </MapView.Callout>
+                            </MapView.Marker>
+                        );
+                    }
+                }
             })}
         </MapView>
     )

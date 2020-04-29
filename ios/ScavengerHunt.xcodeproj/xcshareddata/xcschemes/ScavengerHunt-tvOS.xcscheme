@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "rec-tvOS.app"
-               BlueprintName = "rec-tvOS"
-               ReferencedContainer = "container:rec.xcodeproj">
+               BuildableName = "ScavengerHunt-tvOS.app"
+               BlueprintName = "ScavengerHunt-tvOS"
+               ReferencedContainer = "container:ScavengerHunt.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "rec-tvOSTests.xctest"
-               BlueprintName = "rec-tvOSTests"
-               ReferencedContainer = "container:rec.xcodeproj">
+               BuildableName = "ScavengerHunt-tvOSTests.xctest"
+               BlueprintName = "ScavengerHunt-tvOSTests"
+               ReferencedContainer = "container:ScavengerHunt.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "rec-tvOS.app"
-            BlueprintName = "rec-tvOS"
-            ReferencedContainer = "container:rec.xcodeproj">
+            BuildableName = "ScavengerHunt-tvOS.app"
+            BlueprintName = "ScavengerHunt-tvOS"
+            ReferencedContainer = "container:ScavengerHunt.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "rec-tvOS.app"
-            BlueprintName = "rec-tvOS"
-            ReferencedContainer = "container:rec.xcodeproj">
+            BuildableName = "ScavengerHunt-tvOS.app"
+            BlueprintName = "ScavengerHunt-tvOS"
+            ReferencedContainer = "container:ScavengerHunt.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
